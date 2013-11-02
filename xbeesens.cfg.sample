@@ -1,0 +1,63 @@
+# The master entry represents general network configuration
+[DEFAULT]
+# The identifier of the network - must be shared by all nodes. 
+# 4 digits, hexadecimal, with leading zeros
+networkid = 1981
+nodefile = nodes.cfg
+# webserver port number
+port = 8888
+
+# Each [entry] represent a node of the a specific type
+[TemperatureLight]
+# Sampling interval in milliseconds <= ~ 65000 (decimal!)
+sampleperiod = 10000
+
+# Configure xbee pins:
+# pin_xx = {off,default,analog,digital,output_low,output_hi,association}
+# off - turns of the default function and any io
+# default - default function
+# analog - analog input measures voltage between 0 - 1.2 v (0-1023)
+# digital - digital input
+# output_lo - can be controlled by the request (starts as 0)
+# output_hi - can be controlled by the request (starts as 1)
+# Pins that are not provided are not changed
+
+# Pin numbers and default function (if any)
+# d0 : 20   (commissioning button)
+# d1 : 19
+# d2 : 18
+# d3 : 17
+# d4 : 11
+# d5 : 15   (association indicator)
+# d6 : 16   (RTS)
+# d7 : 12   (CTS)
+# p0 : 6    (received signal strength)
+# p1 : 7 
+# p2 : 4
+
+# on-board temperature sensor
+pin_d0 = analog
+# light sensor
+pin_d1 = analog
+# external temperature sensor
+pin_d2 = analog
+pin_d3 = default
+pin_d6 = default
+pin_d7 = default 
+pin_p0 = default
+# external control
+pin_p1 = output_lo
+pin_p2 = default
+# pin_d5 cannot be set in this tool - it has a special function to turn off when initialized
+# and it is used as an association indicator (flashing when associated)
+
+# formula_xxx compute simple values based on the sample values - executed as a python expression
+# with same sample context: Characters '-' in variable names are replaced with '_'
+# the output of formula_xxx is saved into variable xxx
+
+# temperature on the board
+formula_temp = (adc_0/1024*1200 - 750)/10 + 25
+# external temperature sensor
+formula_exttemp = (adc_2/1024*1200 - 750)/10 + 25
+formula_light = adc_1
+formula_power = 1 if dio_11 else 0

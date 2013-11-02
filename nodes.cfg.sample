@@ -1,0 +1,19 @@
+[MasterNode]
+serial = 0013a20040795ad1
+type = MASTER
+# Allowed types: ['TemperatureLight', 'MASTER']
+
+[Node1]
+serial = 0013a2004079c1ea
+type = TemperatureLight
+# Allowed types: ['TemperatureLight', 'MASTER']
+
+[Node2]
+serial = 0013a2004079c235
+type = TemperatureLight
+# Allowed types: ['TemperatureLight', 'MASTER']
+
+[Node3]
+serial = 0013a20040795a97
+type = TemperatureLight
+# Allowed types: ['TemperatureLight']

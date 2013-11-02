@@ -1,0 +1,31 @@
+[MASTER]
+weatherkey = obtain-from-wunderground
+# period to sample nodes (s)
+nodetime = 120
+# period to sample weather (s)
+weathertime = 1200
+# database address
+thingspeakadd = api.thingspeak.com:80
+# source address (running xbeesens.py listen)
+address = localhost:8888
+
+[Node1]
+writekey = obtain-from-thingspeak.com
+field1 = temp
+field2 = exttemp
+field3 = light
+field4 = power
+
+[Node2]
+writekey = obtain-from-thingspeak.com
+field1 = temp
+field2 = exttemp
+field3 = light
+field4 = power
+
+[Node3]
+writekey = obtain-from-thingspeak.com
+field1 = temp
+field2 = exttemp
+field3 = light
+field4 = power
